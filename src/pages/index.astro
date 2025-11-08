@@ -1,0 +1,514 @@
+---
+import Navbar from '../components/Navbar.astro';
+import '../styles/globals.css';
+
+const projects = [
+	{
+		title: 'TruckyGPS',
+		description: 'Una app de GPS para camiones con rutas optimizadas y alertas en tiempo real.',
+		stack: ['React Native', 'Expo', 'Firebase'],
+		url: '#'
+	},
+	{
+		title: '-',
+		description: '-',
+		stack: ['-', '-', '-'],
+		url: '#'
+	},
+	{
+		title: '-',
+		description: '-',
+		stack: ['-', '-', '-'],
+		url: '#'
+	}
+];
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Julian Hornos | Tecnico Informatico</title>
+	</head>
+	<body>
+		<header class="page-header">
+			<Navbar />
+		</header>
+
+		<main class="page-main">
+			<section id="hero" class="shell hero">
+				<div class="hero-copy">
+					<p class="eyebrow">Julian Hornos</p>
+					<h1>Tecnico En Informatica</h1>
+					<p class="lead">
+						Soy un apasionado programador FullStack, especializado en HTML, CSS y JavaScript.
+						Disfruto creando soluciones web eficientes y atractivas que brindan experiencias excepcionales a los usuarios.
+					</p>
+					<div class="hero-ctas">
+						<a class="glow-button" href="#projects">Ver proyectos</a>
+						<a class="ghost-button" href="#contact">Contactar</a>
+					</div>
+					<div class="hero-stats">
+						<div>
+							<strong>7</strong>
+							<span>Lenguajes de Programacion</span>
+						</div>
+						<div>
+							<strong>03</strong>
+							<span>Proyectos Terminados</span>
+						</div>
+						<div>
+							<strong>01</strong>
+							<span>Titulos</span>
+						</div>
+					</div>
+				</div>
+				<div class="hero-visual">
+					<div class="orb orb-blue"></div>
+					<div class="orb orb-pink"></div>
+					<div class="experience-counter">
+						<div class="counter-ring">
+							<span class="counter-label">Desde enero 2024</span>
+							<strong id="experience-value" class="counter-value">0.00</strong>
+							<span class="counter-sub">años de experiencia</span>
+						</div>
+						<p class="counter-note">Actualizado en tiempo real</p>
+					</div>
+				</div>
+			</section>
+
+			<section id="about" class="shell section">
+				<div class="section-heading">
+					<p class="eyebrow">Sobre mí</p>
+					<h2>Programador FullStack</h2>
+				</div>
+				<div class="about-grid">
+					<p>
+						Soy programador FullStack, me especializo en HTML, CSS y JS, Tambien e trabajado con bases de datos como SupaBase y MySQL,
+						soy autodidacta y me encanta aprender nuevas tecnologias.
+					</p>
+					<ul class="chip-list">
+						<li class="chip">HTML</li>
+						<li class="chip">CSS</li>
+						<li class="chip">Astro / React</li>
+						<li class="chip">Web Desing</li>
+						<li class="chip">JavaScript</li>
+						<li class="chip">MySQL</li>
+					</ul>
+				</div>
+			</section>
+
+			<section id="projects" class="shell section">
+				<div class="section-heading">
+					<p class="eyebrow">Proyectos</p>
+					<h2>Aqui estan todos mis pryectos</h2>
+				</div>
+				<div class="projects-grid">
+					{projects.map((project) => (
+						<article class="project-card">
+							<div class="card-glow"></div>
+							<div class="card-content">
+								<header>
+									<h3>{project.title}</h3>
+									<p>{project.description}</p>
+								</header>
+								<ul class="stack">
+									{project.stack.map((item) => (
+										<li>{item}</li>
+									))}
+								</ul>
+								<a href={project.url} class="ghost-button">Ver estudio</a>
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section id="contact" class="shell section contact">
+				<div class="section-heading">
+					<p class="eyebrow">Contacto</p>
+					<h2>Contactame por las siguientes vias</h2>
+				</div>
+				<div class="contact-grid">
+					<div>
+						<p>
+							Disponible para Trabajo Full-time o Part-time.
+						</p>
+						<div class="contact-info">
+							<a href="mailto:ecatom020@gmail.com">ecatom020@email.com</a>
+							<span>Ciudad de Buenos Aires · Remoto global</span>
+						</div>
+					</div>
+					<div class="contact-actions">
+						<a class="glow-button" href="mailto:ecatom020@gmail.com">Enviar mensaje</a>
+						<a class="ghost-button" href="">Descargar CV</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="page-footer">
+			<p>© {new Date().getFullYear()} Julian Hornos - Tecnico En Informatica.</p>
+		</footer>
+
+		<script type="module">
+			const startDate = new Date('2024-01-01T00:00:00');
+			const target = document.querySelector('#experience-value');
+
+			const updateExperience = () => {
+				if (!target) return;
+				const now = new Date();
+				const diffMs = now.getTime() - startDate.getTime();
+				const years = diffMs / (1000 * 60 * 60 * 24 * 365.25);
+				target.textContent = years.toFixed(2);
+			};
+
+			updateExperience();
+			setInterval(updateExperience, 1000);
+		</script>
+	</body>
+
+	<style>
+		:global(*) {
+			box-sizing: border-box;
+		}
+
+		:global(::selection) {
+			background: rgba(255, 79, 216, 0.4);
+			color: #05010c;
+		}
+
+		.page-header {
+			padding: 2rem 1.5rem 0;
+		}
+
+		.page-main {
+			padding: 0 1.5rem 4rem;
+			display: flex;
+			flex-direction: column;
+			gap: 2.5rem;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.page-footer {
+			text-align: center;
+			padding: 2rem 1rem 4rem;
+			color: var(--color-text-muted);
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+		}
+
+		.section {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		.section-heading {
+			max-width: 640px;
+		}
+
+		.eyebrow {
+			font-size: 0.8rem;
+			letter-spacing: 0.3em;
+			text-transform: uppercase;
+			color: var(--color-accent-contrast);
+		}
+
+		.lead {
+			font-size: 1.15rem;
+			color: var(--color-text-muted);
+			max-width: 580px;
+		}
+
+		.hero {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 2.5rem;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.hero::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(circle at top right, rgba(66, 255, 247, 0.08), transparent 65%);
+			pointer-events: none;
+		}
+
+		.hero-copy {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		.hero-ctas {
+			display: flex;
+			gap: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.glow-button {
+			background: linear-gradient(120deg, var(--color-accent-primary), var(--color-accent-secondary));
+			color: #05010c;
+			padding: 0.85rem 1.8rem;
+			border-radius: 999px;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.18em;
+			box-shadow: 0 20px 45px rgba(0, 255, 248, 0.3);
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		.glow-button:hover {
+			transform: translateY(-3px);
+			box-shadow:
+				0 25px 70px rgba(0, 255, 248, 0.4),
+				0 10px 30px rgba(255, 79, 216, 0.35);
+		}
+
+		.ghost-button {
+			padding: 0.85rem 1.8rem;
+			border-radius: 999px;
+			border: 1px solid rgba(255, 255, 255, 0.25);
+			letter-spacing: 0.18em;
+			text-transform: uppercase;
+			color: var(--color-text-base);
+			transition: color 0.2s ease, border-color 0.2s ease;
+		}
+
+		.ghost-button:hover {
+			color: var(--color-accent-primary);
+			border-color: var(--color-accent-primary);
+		}
+
+		.hero-stats {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+			gap: 1rem;
+		}
+
+		.hero-stats strong {
+			font-size: 2.5rem;
+			display: block;
+			color: var(--color-accent-primary);
+		}
+
+		.hero-visual {
+			position: relative;
+			min-height: 320px;
+			border: 1px solid rgba(255, 255, 255, 0.05);
+			border-radius: 32px;
+			background: linear-gradient(160deg, rgba(33, 15, 46, 0.8), rgba(5, 1, 12, 0.9));
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+		}
+
+		.orb {
+			position: absolute;
+			width: 260px;
+			height: 260px;
+			border-radius: 50%;
+			filter: blur(2px);
+			opacity: 0.35;
+			animation: float 8s ease-in-out infinite;
+		}
+
+		.orb-blue {
+			background: radial-gradient(circle, rgba(66, 255, 247, 0.9), transparent 60%);
+			top: 10%;
+			left: 5%;
+		}
+
+		.orb-pink {
+			background: radial-gradient(circle, rgba(255, 79, 216, 0.9), transparent 60%);
+			bottom: 5%;
+			right: 0;
+			animation-delay: -3s;
+		}
+
+		.experience-counter {
+			position: relative;
+			z-index: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.75rem;
+			text-align: center;
+		}
+
+		.counter-ring {
+			width: 230px;
+			height: 230px;
+			border-radius: 50%;
+			border: 1px solid rgba(255, 255, 255, 0.18);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			background: radial-gradient(circle, rgba(5, 1, 12, 0.65), rgba(8, 0, 25, 0.4));
+			box-shadow:
+				0 0 30px rgba(66, 255, 247, 0.2),
+				inset 0 0 30px rgba(255, 79, 216, 0.15);
+			backdrop-filter: blur(8px);
+			padding: 1rem;
+		}
+
+		.counter-label {
+			font-size: 0.8rem;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			color: var(--color-text-muted);
+		}
+
+		.counter-value {
+			font-size: 3.5rem;
+			color: var(--color-accent-primary);
+			text-shadow: var(--glow-strong);
+			letter-spacing: 0.08em;
+		}
+
+		.counter-sub {
+			font-size: 0.85rem;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: var(--color-text-base);
+		}
+
+		.counter-note {
+			font-size: 0.85rem;
+			color: var(--color-text-muted);
+			letter-spacing: 0.08em;
+		}
+
+		.about-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			gap: 2rem;
+		}
+
+		.chip-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+			padding: 0;
+			list-style: none;
+		}
+
+		.chip {
+			padding: 0.4rem 0.95rem;
+			border-radius: 999px;
+			border: 1px solid rgba(255, 255, 255, 0.25);
+			font-size: 0.85rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		.projects-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			gap: 1.5rem;
+		}
+
+		.project-card {
+			position: relative;
+			border-radius: 24px;
+			overflow: hidden;
+			padding: 1px;
+			background: linear-gradient(160deg, rgba(66, 255, 247, 0.4), rgba(255, 79, 216, 0.3));
+		}
+
+		.card-glow {
+			position: absolute;
+			inset: 20%;
+			background: radial-gradient(circle, rgba(255, 79, 216, 0.35), transparent 70%);
+			filter: blur(30px);
+			z-index: 0;
+		}
+
+		.card-content {
+			position: relative;
+			z-index: 1;
+			background: rgba(5, 1, 12, 0.92);
+			border-radius: 22px;
+			padding: 1.75rem;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		.stack {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.stack li {
+			padding: 0.35rem 0.9rem;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.05);
+			font-size: 0.8rem;
+			letter-spacing: 0.08em;
+		}
+
+		.contact-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			gap: 1.5rem;
+			align-items: center;
+		}
+
+		.contact-info {
+			display: flex;
+			flex-direction: column;
+			gap: 0.3rem;
+			margin-top: 1rem;
+		}
+
+		.contact-info a {
+			font-size: 1.1rem;
+			color: var(--color-text-base);
+		}
+
+		.contact-actions {
+			display: flex;
+			flex-direction: column;
+			gap: 0.8rem;
+		}
+
+		@keyframes float {
+			0%,
+			100% {
+				transform: translateY(0px);
+			}
+			50% {
+				transform: translateY(-12px);
+			}
+		}
+
+		@media (max-width: 600px) {
+			.hero-stats {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+
+			.page-header {
+				padding-top: 1.25rem;
+			}
+
+			.page-main {
+				padding-left: 1rem;
+				padding-right: 1rem;
+			}
+		}
+	</style>
+</html>
